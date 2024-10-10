@@ -101,7 +101,7 @@ namespace DeliveryApp.Services
             {
                 List<Order> orders = (List<Order>)_dbContext.Orders.Where(x => x.DateTimeOfDelivery > DateTime.UtcNow).Where(x => x.DeliveredBy == userId).ToList();
                 List<Order> orders2 = (List<Order>)_dbContext.Orders.Where(x => x.OrderId == orderid).Where(x => x.State == OrderStatus.DELIVERED).ToList();
-                if (orders2.Count == 0)
+                if ( orders2.Count == 0)
                 {
                     Order order = _dbContext.Orders.Find(orderid);
                     order.State = OrderStatus.DELIVERED;

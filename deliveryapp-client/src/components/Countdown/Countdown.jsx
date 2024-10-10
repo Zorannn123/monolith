@@ -14,12 +14,13 @@ const Countdown = () => {
     useEffect(() => {
         const fetchCurrentOrder = async () => {
             try {
+                // ideja je bila da sacuvam orderId nakon kreiranja u localStorage, ali je problem jer se id generise tek nakon upisa u bazu
+                // pa nije moguce proslediti orderId sa fronta bez nekog hardcodeovanja, pa zbog toga timer ne radi :)
                 const data = await getCurrentOrder(); // Fetch current order
                 console.log(data)
                 if (data !== null) {
                     setFinished(false);
                     setOrder(data);
-
                     // Calculate order value
                     const total = data.orderParts.reduce((sum, part) => {
                         return sum + part.product.price * part.quantity;

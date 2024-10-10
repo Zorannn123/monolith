@@ -89,14 +89,14 @@ namespace DeliveryApp.Services
         {
             return _mapper.Map<UserDto>(_dbContext.Users.Find(id));
         }
-        public void AddImage(long userId, string filePath)
+        /*public void AddImage(long userId, string filePath)
         {
             User user = _dbContext.Users.Find(userId);
             if (user == null)
                 return;
             user.PhotoUrl = filePath;
             _dbContext.SaveChanges();
-        }
+        }*/
 
         public List<UserDto> GetUsers()
         {

@@ -114,10 +114,19 @@ export const OrderHistory = () => {
                     </Button>
                 </>
             ) : (
-                <Typography variant="h6" gutterBottom
-                    sx={{ marginBottom: '20px', fontFamily: "Roboto", marginTop: '30px' }}>
-                    Nema porudzbina
-                </Typography>
+                <Box>
+                    <Typography variant="h6" gutterBottom
+                        sx={{ marginBottom: '20px', fontFamily: "Roboto", marginTop: '30px' }}>
+                        Nema porudzbina
+                    </Typography>
+                    <Button
+                        variant="outlined"
+                        sx={{ marginTop: '20px', backgroundColor: 'black', color: '#f7e32f' }}
+                        onClick={handleBack}
+                    >
+                        Back
+                    </Button>
+                </Box>
             )}
         </Box>
     );
