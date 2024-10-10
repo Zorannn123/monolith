@@ -43,7 +43,6 @@ namespace DeliveryApp.Services
 
         public long GetWithId(ProductDto product)
         {
-            // Use FirstOrDefault to safely get the first matching product or null
             var entity = _dbContext.Products
                 .FirstOrDefault(s => s.Name == product.Name && s.Ingredients == product.Ingredients);
 
@@ -53,12 +52,6 @@ namespace DeliveryApp.Services
             }
 
             return _mapper.Map<ProductDto>(entity).ProductId;
-        }
-
-        //TODO:
-        public bool ModifyEntity(ProductDto entity, long id)
-        {
-            throw new System.NotImplementedException();
         }
 
         public bool RemoveEntity(long id)

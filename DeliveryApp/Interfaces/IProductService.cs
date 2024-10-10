@@ -8,7 +8,6 @@ namespace DeliveryApp.Interfaces
         List<ProductDto> GetAll();
         bool AddEntity(ProductDto entity);
         bool RemoveEntity(long id);
-        bool ModifyEntity(ProductDto entity, long id);
         long GetWithId(ProductDto product);
     }
 }

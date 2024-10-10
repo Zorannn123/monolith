@@ -122,11 +122,11 @@ namespace DeliveryApp.Services
             claims.Add(new Claim("Status", users[0].Status.ToString()));
             SymmetricSecurityKey secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey.Value));
             var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
-            var tokeOptions = new JwtSecurityToken(//kreiranje JWT
-                   issuer: _tokenAddress.Value, //url servera koji je izdao token
-                   claims: claims, //claimovi
-                   expires: DateTime.Now.AddMinutes(20), //vazenje tokena u minutama
-                   signingCredentials: signinCredentials //kredencijali za potpis
+            var tokeOptions = new JwtSecurityToken(
+                   issuer: _tokenAddress.Value, 
+                   claims: claims, 
+                   expires: DateTime.Now.AddMinutes(20), 
+                   signingCredentials: signinCredentials 
                );
             string tokenString = new JwtSecurityTokenHandler().WriteToken(tokeOptions);
             return new TokenDto() { Token = tokenString };
@@ -143,8 +143,9 @@ namespace DeliveryApp.Services
             user.Email = userdto.Email;
             user.Firstname = userdto.Firstname;
             user.Lastname = userdto.Lastname;
-            if (userdto.Password.Length > 4)
-                user.Password = Encode(userdto.Password);
+            //TODO: osposobiti sliku
+            user.PhotoUrl = "";
+            user.Password = userdto.Password;
             user.Username = userdto.Username;
 
             _dbContext.SaveChanges();

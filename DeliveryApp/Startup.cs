@@ -52,13 +52,13 @@ namespace DeliveryApp
             })
                 .AddJwtBearer(options =>
                 {
-                    options.TokenValidationParameters = new TokenValidationParameters //Podesavamo parametre za validaciju pristiglih tokena
+                    options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateIssuer = true, //Validira izdavaoca tokena
-                        ValidateAudience = false, //Kazemo da ne validira primaoce tokena
-                        ValidateLifetime = true,//Validira trajanje tokena
-                        ValidateIssuerSigningKey = true, //validira potpis token, ovo je jako vazno!
-                        ValidIssuer = Configuration["tokenAddress"], //odredjujemo koji server je validni izdavalac
+                        ValidateIssuer = true, 
+                        ValidateAudience = false,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true, 
+                        ValidIssuer = Configuration["tokenAddress"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["SecretKey"]))//navodimo privatni kljuc kojim su potpisani nasi tokeni
                     };
                 });
@@ -102,7 +102,7 @@ namespace DeliveryApp
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "DeliveryApp v1"));
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseCors("AllowAllOrigins");
 
             app.UseRouting();

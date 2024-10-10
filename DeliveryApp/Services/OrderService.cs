@@ -46,8 +46,8 @@ namespace DeliveryApp.Services
                 .Where(x => x.DateTimeOfDelivery < DateTime.Now)
                 .Include(x => x.OrderParts)
                 .ThenInclude(c => c.Product)
-                .OrderByDescending(x => x.DateTimeOfDelivery) // Order by the most recent delivery date
-                .FirstOrDefault(); // Get the latest order
+                .OrderByDescending(x => x.DateTimeOfDelivery)
+                .FirstOrDefault(); 
 
             if (order == null)
                 return null;
